@@ -1,14 +1,22 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-title>
-      Ionic Blank
+      Exemplo Beacon Eddystone
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <ion-card>
+    <ion-card-header>
+      Beacon encontrado!
+    </ion-card-header>
+    <ion-card-content>
+      <p>Beacon:</p>
+      <p>Possuí URL:</p>
+    </ion-card-content>
+
+  </ion-card>
+
+  <button ion-button full (click)="escanearBeacons()">Escanear Beacons</button>
 </ion-content>
