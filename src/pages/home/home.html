@@ -7,15 +7,14 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card>
+  <ion-card *ngIf="beacon">
     <ion-card-header>
       Beacon encontrado!
     </ion-card-header>
     <ion-card-content>
-      <p>Beacon:</p>
-      <p>Possuí URL:</p>
+      <p>Endereço: {{ beacon.address }}</p>
+      <a *ngIf="beacon.url" [href]="beacon.url">URL: {{ beacon.url }}</a>
     </ion-card-content>
-
   </ion-card>
 
   <button ion-button full (click)="escanearBeacons()">Escanear Beacons</button>

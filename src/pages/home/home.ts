@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { Component, ChangeDetectorRef } from '@angular/core';
+import { Platform } from 'ionic-angular';
 
 declare var evothings: any;
 
@@ -10,12 +10,26 @@ declare var evothings: any;
 
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  beacon: any;
 
-  }
+  constructor(
+    private platform: Platform,
+    private change: ChangeDetectorRef
+  ) {}
 
   escanearBeacons() {
+    if (this.platform.is('cordova')) { 
+      evothings.eddystone.startScan(
+        dados => {
+          this.beacon = dados;
 
+          setTimeout(() => this.change.detectChanges(), 1000);
+        },
+        error => {
+          console.log(error);
+        }
+      )
+    }
   }
 
 }
